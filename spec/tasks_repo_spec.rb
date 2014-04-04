@@ -43,4 +43,13 @@ describe TasksRepo do
     expect(actual).to eq expected
   end
 
+  it "allows the user to delete an item" do
+    @repo.create(description: "hello")
+    @repo.create(description: "pet the cat")
+    @repo.delete(2)
+    actual = @repo.all
+    expected = [{id: 1, description: "hello", completed: false}]
+    expect(actual).to eq expected
+  end
+
 end

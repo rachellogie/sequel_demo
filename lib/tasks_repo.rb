@@ -7,8 +7,7 @@ class TasksRepo
   end
 
   def create(attributes)
-    tasks = @db[:tasks]
-    tasks.insert(attributes)
+    @db[:tasks].insert(attributes)
   end
 
   def all
@@ -21,6 +20,10 @@ class TasksRepo
 
   def find(id)
     @db[:tasks].where('id = ?', id).to_a.first
+  end
+
+  def delete(id)
+    @db[:tasks].where('id = ?', id).delete
   end
 
 end
